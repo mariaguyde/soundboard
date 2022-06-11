@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import { useSelector } from "react-redux";
 import {useDispatch} from "react-redux";
 import {addSampleToList, librarySliceSelector} from "./librarySlice";

@@ -7,7 +7,11 @@ import {createSlice} from "@reduxjs/toolkit";
 const librarySlice = createSlice({
     name:"samples",
     // list of the basic samples for the users
-    initialState: [{id:0, sample: 'clap_1.wav', category:"local"}, {id:1, sample: 'clap_2.wav', category:"local"},],
+    initialState: [
+        { id: 0, sample: 'Shaker 3', category:"local", file: require("../assets/samples/shaker_3.wav")},
+        { id: 1, sample: 'Alesis Pizzicato Strings C4', category:"local", file:require("../assets/samples/Alesis-Pizzicato-Strings-C4.wav")},
+        { id: 2, sample: 'Tom 4', category:"local", file:require("../assets/samples/tom_4.wav")},
+        ],
     reducers : {
         /***
          * Here the state represents the list of the samples that we currently have
@@ -23,7 +27,6 @@ const librarySlice = createSlice({
                 return [ ...state,action.payload];
             }
         },
-
         },
 });
 

@@ -37,9 +37,8 @@ const freeSound = () => {
          * this is what my request looks like with parameters for my API key (in case it changes, I just have to change the variable)
          * and the keyword that the user typed in the search bar
          * */
-        const response = await fetch(`https://freesound.org/apiv2/search/text/?query=${input}&token=${apiKey}`);
+        const response = await fetch(`https://freesound.org/apiv2/search/text/?query=${input}&fields=id,name,url,previews,download&token=${apiKey}`);
         const json = await response.json();
-
         /**
          * Once I fetch the data from the response I got after sending my request,
          * I stock the informations I want in objects for each result.
