@@ -1,5 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
-import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import { useSelector } from "react-redux";
 import {useDispatch} from "react-redux";
 import {addSampleToList, librarySliceSelector} from "./librarySlice";

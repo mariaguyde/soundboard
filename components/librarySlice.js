@@ -1,10 +1,18 @@
 import {createSlice} from "@reduxjs/toolkit";
 
+/**
+ * This slice allows me to stock in the initialState some basic samples for the users
+ * but also add, edit or delete a sample from the list of samples
+ * */
 const librarySlice = createSlice({
     name:"samples",
+    // list of the basic samples for the users
     initialState: [{id:0, sample: 'clap_1.wav', category:"local"}, {id:1, sample: 'clap_2.wav', category:"local"},],
     reducers : {
-        // state -> liste des chansons et action -> element que j'ai récupérée depuis la liste qui n'est pas présejt encore dans la liste
+        /***
+         * Here the state represents the list of the samples that we currently have
+         * while the action is the thing that I got and that is not present yet in the library
+         * **/
         addSampleToList: (state, action) => {
             //console.log((state));
             let get_sample = state.map((elm) => elm.id).includes(action.payload.id);

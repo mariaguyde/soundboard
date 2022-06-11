@@ -1,12 +1,15 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
+
 import Soundboard from '../components/Soundboard';
 import Params from '../components/Params';
 import FreeSound from '../components/FreeSound';
 
-
+/***
+ * Implementation of the Stack Navigator which allows me to make transitions between pages of my mobile app
+ * This will be the menu that the user can use once he presses one of the buttons of the soundboard.
+ * */
 const Menu = () => {
-
     const Stack = createStackNavigator();
 
     return (

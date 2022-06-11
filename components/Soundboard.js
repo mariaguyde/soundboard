@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import {Pressable, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 import {librarySliceSelector} from './librarySlice';
 import { useSelector } from "react-redux";
 import { FlatList} from "react-native";
@@ -10,6 +10,9 @@ const Soundboard = () => {
 
     const navigation = useNavigation();
 
+    /***
+     * Play the sound of the sample
+     * */
     const hearSample = async (sample) => {
         console.log('hearSample');
         //const { son } = await Audio.Sound.createAsync(sample);

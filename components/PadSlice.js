@@ -4,7 +4,10 @@ const PadSlice = createSlice({
     name:"padSample",
     initialState: [],
     reducers : {
-        // state -> liste des chansons et action -> element que j'ai récupérée depuis la liste qui n'est pas présejt encore dans la liste
+        /***
+         * Here the state represents the list of the samples that we currently have
+         * while the action is the thing that I got and that is not present yet in the library
+         * **/
         editSample: (state, action) => {
             let get_sample = state.map((elm) => elm.id).includes(action.payload.id);
         },

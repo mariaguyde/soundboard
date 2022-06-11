@@ -19,6 +19,10 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig,
     reducers);
 
+
+/**
+ * Assignement of the reducers to the store
+ * */
 export default configureStore({
     reducer: persistedReducer,
     middleware: [thunk],

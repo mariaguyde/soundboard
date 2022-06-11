@@ -1,7 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
-import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {View} from 'react-native';
 import {useNavigation} from "@react-navigation/native";
 
+// View for the Page Parameters
 const Params = () => {
     const navigation = useNavigation();
     return (
