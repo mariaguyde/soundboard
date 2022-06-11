@@ -1,6 +1,7 @@
 import {View, TextInput, FlatList} from "react-native";
 import {useEffect, useState} from "react/cjs/react.development";
 import {useDispatch} from "react-redux";
+import {addSampleToList} from "./librarySlice";
 
 const sample_infos = (sample) => {
     return {
@@ -14,6 +15,18 @@ const freeSound = () => {
     const [input, setInput] = useState("");
     const [listResults, setListResults] = useState([]);
     const dispatch = useDispatch();
+
+    /**
+     * Add the sound to the local library
+     */
+    const add = (item) => {
+        console.log(item);
+        dispatch(addSampleToList({
+            id: item.id,
+            sample: item.sample,
+            category: "FreeSound_API",
+        }));
+    }
 
     const callAPI = async () => {
         // this is my key that the library Freesound gave me so I can make requests
@@ -63,7 +76,10 @@ const freeSound = () => {
                 <FlatList
                     data={listResults}
                     renderItem={({ item }) => (
-                        <div>{item.sample}</div>
+                        <div style={{margin:"10px 0"}}>
+                            {item.sample}
+                            <button  style={{marginLeft:"10px", backgroundColor: "#1c2564", color:"white", border:"none", borderRadius:"10px", padding:"10px"}} onClick={() => add(item)} >Ajouter ce sample à la liste</button>
+                        </div>
                     )}
                     keyExtractor={(item) => item.id}
                 />

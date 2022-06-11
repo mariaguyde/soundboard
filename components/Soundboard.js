@@ -19,23 +19,22 @@ const Soundboard = () => {
         //await son.playAsync();
     };
 
-    const samples = useSelector(librarySliceSelector);
+    const samples = useSelector((state) => state.library);
     //const samples = useSelector((state) => state.samples);
     console.log(samples);
 
     const sample_infos = ({ item }) => (
-        <p>{item.name}</p>
+        <div style={{marginTop:"20px"}}>
+            <TouchableOpacity onLongPress={() => navigation.navigate('Params')}>
+                <button style={{width:'fit-content',backgroundColor:"#e8bb9f",padding:"14px", fontWeight:"bold", border:"none", borderRadius:"10px"}} onClick={() => hearSample()}>{item.sample}</button>
+            </TouchableOpacity>
+        </div>
+
     );
 
     return (
         <View>
             <div id="samples">
-                <div>
-                    <TouchableOpacity onLongPress={() => navigation.navigate('Params')}>
-                        <button style={{backgroundColor:"#e8bb9f",padding:"7px", fontWeight:"bold", border:"none"}} onClick={() => hearSample()}>Samples</button>
-                    </TouchableOpacity>
-                </div>
-
                 <FlatList
                     data={samples}
                     renderItem={sample_infos}/>

@@ -14,7 +14,6 @@ const librarySlice = createSlice({
          * while the action is the thing that I got and that is not present yet in the library
          * **/
         addSampleToList: (state, action) => {
-            //console.log((state));
             let get_sample = state.map((elm) => elm.id).includes(action.payload.id);
             if (get_sample == true) {
                 return state;
@@ -30,4 +29,4 @@ const librarySlice = createSlice({
 
 export const {addSampleToList}=librarySlice.actions;
 export default librarySlice.reducer;
-export const librarySliceSelector= (state) => state.samples;
+export const librarySliceSelector = (state) => state.samples;
