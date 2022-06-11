@@ -6,7 +6,6 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 
 const Soundboard = () => {
-
     const navigation = useNavigation();
 
     /***
@@ -59,7 +58,9 @@ const Soundboard = () => {
     return (
         <View>
             <div id="samples">
-
+                <FlatList
+                    data={samples}
+                    renderItem={sample_infos}/>
             </div>
         </View>
     );
