@@ -1,11 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
-import { useSelector } from "react-redux";
+import {Button, Text, View} from 'react-native';
 import {useDispatch} from "react-redux";
-import {addSampleToList, librarySliceSelector} from "./librarySlice";
+import {addSampleToList} from "./librarySlice";
 
 const Sample = () => {
-    //const librarySamples = useSelector(librarySliceSelector);
-    //console.log(librarySamples);
     const dispatch = useDispatch();
 
     function addSample() {
@@ -15,21 +12,13 @@ const Sample = () => {
 
     return (
             <View>
-                <div>
-                    <p>TO DO : LISTE DYNAMIQUE</p>
-                    <button onClick={addSample}>TEST</button>
-                </div>
+                <View>
+                    <Text>TO DO : LISTE DYNAMIQUE</Text>
+                    <Button title="TEST" onClick={addSample}/>
+                </View>
             </View>
         );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
 
 export default Sample;

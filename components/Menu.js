@@ -1,6 +1,6 @@
 import React from 'react'
-import { createStackNavigator } from '@react-navigation/stack';
-
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Soundboard from '../components/Soundboard';
 import Params from '../components/Params';
 import FreeSound from '../components/FreeSound';
@@ -10,16 +10,17 @@ import FreeSound from '../components/FreeSound';
  * This will be the menu that the user can use once he presses one of the buttons of the soundboard.
  * */
 const Menu = () => {
-    const Stack = createStackNavigator();
+    const Stack = createNativeStackNavigator();
 
     return (
-        <Stack.Navigator>
+        <NavigationContainer>
+            <Stack.Navigator initialRouteName="Soundboard">
             <Stack.Screen name="Soundboard"
                           component={Soundboard}
                           options={{
                               title: 'Soundboard',
                               headerStyle: {
-                                  backgroundColor: '#1c2564',
+                                  backgroundColor: '#592304',
                               },
                               headerTintColor: 'white',
                               headerTitleStyle: {
@@ -32,7 +33,7 @@ const Menu = () => {
                           options={{
                               title: 'Soundboard - Paramètres',
                               headerStyle: {
-                                  backgroundColor: '#1c2564',
+                                  backgroundColor: '#592304',
                               },
                               headerTintColor: 'white',
                               headerTitleStyle: {
@@ -46,7 +47,7 @@ const Menu = () => {
                           options={{
                               title: 'Soundboard - Trouver un son dans la librairie FreeSound',
                               headerStyle: {
-                                  backgroundColor: '#1c2564',
+                                  backgroundColor: '#592304',
                               },
                               headerTintColor: 'white',
                               headerTitleStyle: {
@@ -54,7 +55,8 @@ const Menu = () => {
                               },
                           }}
             />
-        </Stack.Navigator>
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 }
 

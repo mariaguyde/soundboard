@@ -1,17 +1,21 @@
-import {View, TextInput, FlatList} from "react-native";
+import {View, TextInput, FlatList, Button, Text,StyleSheet} from "react-native";
 import {useEffect, useState} from "react/cjs/react.development";
 import {useDispatch} from "react-redux";
 import {addSampleToList} from "./librarySlice";
+import { Audio } from "expo-av"
+import React from "react";
 
 const sample_infos = (sample) => {
+    //console.log(sample);
     return {
         id: sample.id.toString(),
         sample: sample.name,
-        artist: sample.username,
+        category: "freeSoundApi",
+        url: sample.previews["preview-hq-mp3"],
     };
 };
 
-const freeSound = () => {
+const FreeSound = () => {
     const [input, setInput] = useState("");
     const [listResults, setListResults] = useState([]);
     const dispatch = useDispatch();
@@ -28,10 +32,28 @@ const freeSound = () => {
         }));
     }
 
+    const [sound, setSound] = React.useState();
+    const playSample = async (item) => {
+        console.log("playSample");
+        // console.log(item.url);
+        const { sound } = await Audio.Sound.createAsync({uri:item.url});
+        //console.log(sound);
+        setSound(sound);
+        console.log('Playing Sound');
+        await sound.playAsync();
+    }
+    React.useEffect(() => {
+        return sound
+            ? () => {
+                console.log('Unloading Sound');
+                sound.unloadAsync(); }
+            : undefined;
+    }, [sound]);
+
     const callAPI = async () => {
         // this is my key that the library Freesound gave me so I can make requests
-        let apiKey = "6ej0JZXst3c33gwvTe0hz2lXN9t6a2eSIfPjvWvC";
         //console.log(input);
+        let apiKey = "6ej0JZXst3c33gwvTe0hz2lXN9t6a2eSIfPjvWvC";
 
         /**
          * this is what my request looks like with parameters for my API key (in case it changes, I just have to change the variable)
@@ -71,20 +93,26 @@ const freeSound = () => {
                 onChangeText={setInput}
                 placeholder="Nom de la musique ou de l' artiste"/>
 
-            <div style={{margin:"10px"}}>
+            <View style={{margin:"3%"}}>
                 <FlatList
                     data={listResults}
                     renderItem={({ item }) => (
-                        <div style={{margin:"10px 0"}}>
-                            {item.sample}
-                            <button  style={{marginLeft:"10px", backgroundColor: "#1c2564", color:"white", border:"none", borderRadius:"10px", padding:"10px"}} onClick={() => add(item)} >Ajouter ce sample à la liste</button>
-                        </div>
+                        <View style={{margin:"3%"}}>
+                            <Text style={{marginBottom:"2%", fontWeight:"bold"}}>{item.sample}</Text>
+                            <View style={{marginBottom:"1%"}}>
+                                <Button color="#592304" title="Ajouter ce sample à la liste" onPress={() => add(item)} />
+                            </View>
+                            <View style={{marginBottom:"9%"}}>
+                                <Button color="#592304" title="Jouer le sample"  onPress={() => playSample(item)} />
+                            </View>
+                        </View>
                     )}
                     keyExtractor={(item) => item.id}
                 />
-            </div>
+            </View>
         </View>
     );
 };
 
-export default freeSound;
+
+export default FreeSound;

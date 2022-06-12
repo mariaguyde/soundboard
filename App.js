@@ -4,8 +4,7 @@ import {Provider} from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react'
 import {persistStore} from 'redux-persist';
 import Menu from "./components/Menu";
-import {NavigationContainer} from "@react-navigation/native";
-import Sample from "./components/Sample";
+import 'react-native-gesture-handler';
 
 /**
  * Implementation of the persistor :  we take the Redux state of the object and saves it to a persisted storage
@@ -16,9 +15,7 @@ export default function App() {
   return (
       <Provider store={store}>
           <PersistGate persistor={persistor}>
-              <NavigationContainer>
-                 <Menu></Menu>
-              </NavigationContainer>
+                 <Menu/>
               <StatusBar style="auto" />
           </PersistGate>
       </Provider>

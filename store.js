@@ -2,8 +2,9 @@ import {combineReducers} from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import librarySampleReducer from "./components/librarySlice";
-import storage from 'redux-persist/lib/storage';
+// import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const reducers = combineReducers(
     {
@@ -13,16 +14,12 @@ const reducers = combineReducers(
 
 const persistConfig = {
     key: "root",
-    storage,
+    storage : AsyncStorage,
 };
 
 const persistedReducer = persistReducer(persistConfig,
     reducers);
 
-
-/**
- * Assignement of the reducers to the store
- * */
 export default configureStore({
     reducer: persistedReducer,
     middleware: [thunk],
