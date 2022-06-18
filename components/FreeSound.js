@@ -90,8 +90,9 @@ const FreeSound = () => {
         <View style={{ flex: 1 }}>
             <TextInput
                 value={input}
+                style={{margin:10}}
                 onChangeText={setInput}
-                placeholder="Nom de la musique ou de l' artiste"/>
+                placeholder="Nom du sample"/>
 
             <View style={{margin:"3%"}}>
                 <FlatList

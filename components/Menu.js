@@ -4,6 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Soundboard from '../components/Soundboard';
 import Params from '../components/Params';
 import FreeSound from '../components/FreeSound';
+import Library from '../components/Library';
+
 
 /***
  * Implementation of the Stack Navigator which allows me to make transitions between pages of my mobile app
@@ -46,6 +48,20 @@ const Menu = () => {
                           component={FreeSound}
                           options={{
                               title: 'Soundboard - Trouver un son dans la librairie FreeSound',
+                              headerStyle: {
+                                  backgroundColor: '#592304',
+                              },
+                              headerTintColor: 'white',
+                              headerTitleStyle: {
+                                  fontWeight: 'bold',
+                              },
+                          }}
+            />
+
+            <Stack.Screen name="Library"
+                          component={Library}
+                          options={{
+                              title: 'Soundboard - Bibiliothèque des samples',
                               headerStyle: {
                                   backgroundColor: '#592304',
                               },
