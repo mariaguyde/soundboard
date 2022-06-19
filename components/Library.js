@@ -2,7 +2,7 @@ import {Button, Text, TouchableOpacity, View} from 'react-native';
 import { FlatList} from "react-native";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import MusicNoteIcon from '@mui/icons-material/MusicNote';
+//import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import {editSample} from "./PadSlice";
 import {Audio} from "expo-av";
 
@@ -42,16 +42,21 @@ const Library = (props) => {
 
     }
 
+    // <MusicNoteIcon style={{color:"#592304"}} sx={{ fontSize: 40 }}/>
+
     const sample_infos = ({ item }) => (
         <View style={{margin:"2%", display:"flex", flexDirection:"row"}}>
             <View style={{marginTop:13, marginRight:19}}>
-                <MusicNoteIcon style={{color:"#592304"}} sx={{ fontSize: 40 }}/>
             </View>
             <View>
                 <Text>{item.sample}</Text>
                 <Text>{item.category}</Text>
-                <Button title="Jouer le sample"onPress={() => playSample(item)}/>
-                <Button title="Remplacer le son par ce sample"onPress={() => replaceSample(item)}/>
+                <View style={{marginBottom:"2%"}}>
+                    <Button color="#592304" title="Jouer le sample"onPress={() => playSample(item)}/>
+                </View>
+                <View style={{marginBottom:"2%"}}>
+                    <Button color="#592304" title="Remplacer le son par ce sample"onPress={() => replaceSample(item)}/>
+                </View>
             </View>
         </View>
     );

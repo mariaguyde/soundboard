@@ -1,4 +1,4 @@
-import { TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import { useSelector } from "react-redux";
 import { FlatList} from "react-native";
 import { Audio } from "expo-av"
@@ -59,6 +59,15 @@ const Soundboard = () => {
                 <FlatList
                     data={samples}
                     renderItem={sample_infos}/>
+            </View>
+
+            <View style={{margin:'2%'}}>
+                <View style={{ backgroundColor:"#592304", padding:15, borderRadius:10, marginBottom:14}}>
+                    <Text style={{fontWeight:"bold",textAlign:"center",color:"white"}} onPress={() => navigation.navigate('FreeSound')}> Trouver un son dans la librairie FreeSound </Text>
+                </View>
+                <View style={{ backgroundColor:"#592304", padding:15, borderRadius:10, marginBottom:14}}>
+                    <Text style={{fontWeight:"bold",textAlign:"center",color:"white"}} onPress={() => navigation.navigate('Microphone')}> Enregistrer un sample avec son microphone </Text>
+                </View>
             </View>
         </View>
     );

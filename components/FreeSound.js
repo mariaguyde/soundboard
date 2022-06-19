@@ -103,10 +103,10 @@ const FreeSound = () => {
                         <View style={{margin:"3%"}}>
                             <Text style={{marginBottom:"2%", fontWeight:"bold"}}>{item.sample}</Text>
                             <View style={{marginBottom:"1%"}}>
-                                <Button color="#592304" title="Ajouter ce sample à la liste" onPress={() => add(item)} />
+                                <Button color="#592304" title="Jouer le sample"  onPress={() => playSample(item)} />
                             </View>
                             <View style={{marginBottom:"9%"}}>
-                                <Button color="#592304" title="Jouer le sample"  onPress={() => playSample(item)} />
+                                <Button color="#592304" title="Ajouter ce sample à la liste" onPress={() => add(item)} />
                             </View>
                         </View>
                     )}

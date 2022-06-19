@@ -15,43 +15,16 @@ const PadSlice = createSlice({
          * while the action is the thing that I got and that is not present yet in the library
          * **/
         editSample: (state, action) => {
-            //let get_sample = state.map((elm) => elm.id).includes(action.payload.id);
             console.log("editSample");
-            console.log(action.payload);
             console.log(action.payload.idSampleToReplace);
 
             //check if the sample we want to replace is in the state
-            let get_sample = state.map((elm) => elm.id).includes(action.payload.idSampleToReplace);
-            /*state.map((item) => {
-                console.log(item.id);
-                console.log(action.payload.idSampleToReplace);
-                if ((item.id === action.payload.idSampleToReplace)) {
-                    /*console.log("the id of the sample to replace is indeed in the state");
-                    console.log(item.id);
-                    console.log(item.sample);
-                    console.log("new item sample")
-                    console.log(action.payload.newSample);
-                    item.id = action.payload.newSample.id;
-                    item.category = action.payload.newSample.category;
-                    item.sample = action.payload.newSample.sample;
-                    item.file = action.payload.newSample.file;*/
-                    /*let state =  { ...item, ...action.payload.newSample }
-                    console.log("after affection to new sample");
-                    console.log(state);
-                    return { ...item, ...action.payload.newSample }
-                }
-                else {
-                    return item;
-                }*/
-
-                return state.map(
-                    item =>
-                        item.id === action.payload.idSampleToReplace
-                            ?  { ...item, ...action.payload }
-                            : item
-                )
-
-
+            return state.map(
+                item =>
+                    item.id === action.payload.idSampleToReplace
+                        ?  { ...item, ...action.payload.newSample }
+                        : item
+            )
         },
     }
 });

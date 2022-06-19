@@ -18,14 +18,9 @@ const Params = (props) => {
                     >Remplacer ce son par un autre sample dans la bibliothèque</Text>
                 </View>
                 <View style={{ backgroundColor:"#e3d3a6", padding:15, borderRadius:10, marginBottom:14}}>
-                    <Text style={{fontWeight:"bold",textAlign:"center"}} onPress={() => navigation.navigate('FreeSound')}> Trouver un son dans la librairie FreeSound </Text>
+                    <Text style={{fontWeight:"bold",textAlign:"center"}} onPress={() => navigation.navigate('EditingSound')}> Rogner le son </Text>
                 </View>
-                <View style={{ backgroundColor:"#e3d3a6", padding:15, borderRadius:10, marginBottom:14}}>
-                    <Text style={{fontWeight:"bold",textAlign:"center"}}> Rogner le son </Text>
-                </View>
-                <View style={{ backgroundColor:"#e3d3a6", padding:15, borderRadius:10, marginBottom:14}}>
-                    <Text style={{fontWeight:"bold",textAlign:"center"}} onPress={() => navigation.navigate('Microphone')}> Enregistrer un sample avec son microphone </Text>
-                </View>
+
             </View>
         </View>
     );
