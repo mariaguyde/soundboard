@@ -8,7 +8,7 @@ import React from "react";
 const Soundboard = () => {
     const navigation = useNavigation();
 
-    const samples = useSelector((state) => state.library);
+    const samples = useSelector((state) => state.padSamples);
     console.log(samples);
 
     const sample_infos = ({ item }) => (
@@ -17,7 +17,11 @@ const Soundboard = () => {
                 <TouchableOpacity
                     style={{height: 50, width: 50,backgroundColor:"#e3d3a6",padding:"2%", fontWeight:"bold", border:"none", borderRadius:9}}
                     onPress={() => playSound(item)}
-                    onLongPress={() => navigation.navigate("Params")}>
+                    onLongPress={() =>
+                        navigation.navigate("Params", {
+                            sampleID: item.id,
+                        })
+                    }>
                 </TouchableOpacity>
             </View>
         </View>

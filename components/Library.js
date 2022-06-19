@@ -1,12 +1,46 @@
 import {Button, Text, TouchableOpacity, View} from 'react-native';
 import { FlatList} from "react-native";
 import React from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import {editSample} from "./PadSlice";
+import {Audio} from "expo-av";
 
-const Library = () => {
+const Library = (props) => {
     const samples = useSelector((state) => state.library);
     console.log(samples);
+    const padSamples = useSelector((state) => state.padSamples);
+    console.log(padSamples);
+    const {sampleID} = props.route.params;
+    console.log(sampleID);
+    const dispatch = useDispatch();
+
+    const [sound, setSound] = React.useState();
+    const playSample = async (item) => {
+        console.log("playSample");
+        const { sound } = await Audio.Sound.createAsync({uri:item.file});
+        //console.log(sound);
+        setSound(sound);
+        console.log('Playing Sound');
+        await sound.playAsync();
+    }
+    React.useEffect(() => {
+        return sound
+            ? () => {
+                console.log('Unloading Sound');
+                sound.unloadAsync(); }
+            : undefined;
+    }, [sound]);
+
+    const replaceSample = (item) => {
+        console.log("new sample");
+        console.log(item);
+        dispatch(editSample({
+            idSampleToReplace: sampleID,
+            newSample : item
+        }));
+
+    }
 
     const sample_infos = ({ item }) => (
         <View style={{margin:"2%", display:"flex", flexDirection:"row"}}>
@@ -14,8 +48,10 @@ const Library = () => {
                 <MusicNoteIcon style={{color:"#592304"}} sx={{ fontSize: 40 }}/>
             </View>
             <View>
-                <p>{item.sample}</p>
-                <p>{item.category}</p>
+                <Text>{item.sample}</Text>
+                <Text>{item.category}</Text>
+                <Button title="Jouer le sample"onPress={() => playSample(item)}/>
+                <Button title="Remplacer le son par ce sample"onPress={() => replaceSample(item)}/>
             </View>
         </View>
     );

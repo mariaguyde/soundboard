@@ -5,7 +5,7 @@ import Soundboard from '../components/Soundboard';
 import Params from '../components/Params';
 import FreeSound from '../components/FreeSound';
 import Library from '../components/Library';
-
+import Microphone from '../components/Microphone';
 
 /***
  * Implementation of the Stack Navigator which allows me to make transitions between pages of my mobile app
@@ -72,6 +72,20 @@ const Menu = () => {
                           }}
             />
             </Stack.Navigator>
+
+            <Stack.Screen name="Microphone"
+                          component={Microphone}
+                          options={{
+                              title: 'Soundboard - Enregistrement de samples',
+                              headerStyle: {
+                                  backgroundColor: '#592304',
+                              },
+                              headerTintColor: 'white',
+                              headerTitleStyle: {
+                                  fontWeight: 'bold',
+                              },
+                          }}
+            />
         </NavigationContainer>
     );
 }

@@ -8,9 +8,9 @@ import React from "react";
 const sample_infos = (sample) => {
     //console.log(sample);
     return {
-        id: sample.id.toString(),
+        id: sample.id,
         sample: sample.name,
-        category: "freeSoundApi",
+        category: "freeSound",
         url: sample.previews["preview-hq-mp3"],
     };
 };
@@ -28,7 +28,8 @@ const FreeSound = () => {
         dispatch(addSampleToList({
             id: item.id,
             sample: item.sample,
-            category: "FreeSound_API",
+            category: "freesound",
+            file: item.url
         }));
     }
 
@@ -61,6 +62,7 @@ const FreeSound = () => {
          * */
         const response = await fetch(`https://freesound.org/apiv2/search/text/?query=${input}&fields=id,name,url,previews,download&token=${apiKey}`);
         const json = await response.json();
+        console.log(json.results);
         /**
          * Once I fetch the data from the response I got after sending my request,
          * I stock the informations I want in objects for each result.

@@ -11,6 +11,7 @@ const librarySlice = createSlice({
         { id: 0, sample: 'Shaker 3', category:"local", file: require("../assets/samples/shaker_3.wav")},
         { id: 1, sample: 'Alesis Pizzicato Strings C4', category:"local", file:require("../assets/samples/Alesis-Pizzicato-Strings-C4.wav")},
         { id: 2, sample: 'Tom 4', category:"local", file:require("../assets/samples/tom_4.wav")},
+        { id: 3, sample: 'Kalimba C4', category:"local", file:require("../assets/samples/Kalimba-C4.wav")},
         ],
     reducers : {
         /***
